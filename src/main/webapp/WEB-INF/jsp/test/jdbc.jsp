@@ -10,7 +10,7 @@
         
             <c:forEach items="${users}" var="user">
                 <div>
-                    ${user.id }: ${user.firstName } ${user.lastName }
+                    ${user.id }: ${user.firstName } ${user.lastName }&nbsp;
                 </div>
             </c:forEach>
         
