@@ -7,7 +7,7 @@
 		<h1>Home page</h1>
 
         <div>
-            <h2>Test (remove on producion)</h2>
+            <h2>Test (remove on producion).</h2>
             <a href="/test/jdbc">Test jdbc</a><br>
         </div>
         
