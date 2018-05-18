@@ -1,12 +1,20 @@
 package com.bmp.projectmanager.application.domain.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -37,6 +45,12 @@ public class User implements Serializable {
 
 	@Column(name="token", length=32, nullable=true)
 	private String token;
+
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="user", orphanRemoval = true)
+	private Set<UserRole> userRoles;
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="users")
+    private Set<Project> projects = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -78,6 +92,13 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
+	public Set<UserRole> getUserRoles() {
+		if (userRoles == null) {
+			userRoles = new HashSet<>();
+		}
+		return userRoles;
+	}
+
 	public boolean isEnabled() {
 		return enabled;
 	}
@@ -92,6 +113,43 @@ public class User implements Serializable {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public Set<Project> getProjects() {
+		return projects;
+	}
+
+	@Override
+	public String toString() {
+		return "People [id=" + id + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", password=" + password + "]";
+    }
+
+	public String getHighLevelRole() {
+
+	    List<String> allRoles = new ArrayList<>();
+
+	    for (UserRole role : this.getUserRoles()) {
+            allRoles.add(role.getRole());
+        }
+
+	    if (allRoles.contains(Role.ROLE_ADMIN)) {
+	        return Role.ROLE_ADMIN;
+	    } else if(allRoles.contains(Role.ROLE_MANAGER)) {
+	        return Role.ROLE_MANAGER;
+	    } else {
+	        return Role.ROLE_USER;
+	    }
+
+	}
+
+	public List<String> getRolesList() {
+	    List<String> list = new ArrayList<>();
+
+	    for (UserRole role : this.getUserRoles()) {
+            list.add(role.getRole());
+        }
+
+	    return list;
 	}
 
 }

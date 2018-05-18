@@ -58,7 +58,7 @@ public class TestController {
     @GetMapping("/jpa")
     public ModelAndView jpa(ModelAndView model) {
 
-        List<User> users = userRepository.findByFirstnameEndsWith("eg");
+        List<User> users = userRepository.findAll();
 
         model.addObject("users", users);
         model.setViewName("test/jpa");
