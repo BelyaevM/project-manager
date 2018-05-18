@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bmp.projectmanager.application.dao.UserRepository;
+import com.bmp.projectmanager.application.domain.entity.User;
 import com.bmp.projectmanager.application.domain.entity.UserJdbc;
 
 @Controller
@@ -21,6 +23,9 @@ import com.bmp.projectmanager.application.domain.entity.UserJdbc;
 public class TestController {
 
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
@@ -48,6 +53,17 @@ public class TestController {
         modelAndView.setViewName("test/jdbc");
 
         return modelAndView;
+    }
+
+    @GetMapping("/jpa")
+    public ModelAndView jpa(ModelAndView model) {
+
+        List<User> users = userRepository.findByFirstnameEndsWith("eg");
+
+        model.addObject("users", users);
+        model.setViewName("test/jpa");
+
+        return model;
     }
 
 }

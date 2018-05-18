@@ -4,7 +4,7 @@
 
 <t:template title="Project Manager">
     <jsp:attribute name="content">
-        <h1>JDBC Test</h1>
+        <h1>JPA Test</h1>
 
         <div>
         
