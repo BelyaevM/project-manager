@@ -24,6 +24,7 @@ CREATE TABLE `persistent_logins` (
   PRIMARY KEY (`series`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- Password: proj1m
 INSERT INTO `user`(email, firstName, lastName, password) VALUES ('admin@projm.com','Admin','Admin','$2a$10$wyy4L1P8Sn4YeJZ.LSOK6ezX8IwNbP1v8pM/Jyf0zEOQjXBnDoCaq');
 INSERT INTO `user_role`(userId, role) VALUES (1,'ROLE_ADMIN');
 INSERT INTO `user_role`(userId, role) VALUES (1,'ROLE_MANAGER');
