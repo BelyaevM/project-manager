@@ -6,4 +6,6 @@ import com.bmp.projectmanager.application.domain.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
+    User findByEmailAndEnabledTrue(String email);
+
 }

@@ -13,6 +13,10 @@
             <a href="/test/jpa">Test jpa</a><br>
         </div>
         
+        <form method="post" action="/logout">
+        	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        	<input type="submit" value="Logout">
+        </form>
         
 	</jsp:attribute>
 	
