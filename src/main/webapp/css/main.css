@@ -46,6 +46,18 @@ div.rightMenu a.logout {
 	padding-left: 1em;
 }
 
+div.mainMenu {
+	float:left;
+}
+
+div.rightMenu {
+	float:right;
+}
+
+form#logoutForm {
+	display: inline;
+}
+
 /* END MENU */
 
 .site-header {	

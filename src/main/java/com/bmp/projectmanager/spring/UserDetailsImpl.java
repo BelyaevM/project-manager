@@ -13,6 +13,7 @@ import com.bmp.projectmanager.application.domain.entity.UserRole;
 
 public class UserDetailsImpl implements UserDetails {
 
+    private static final long serialVersionUID = 2877136743159387065L;
     private User user;
     private List<GrantedAuthority> roles = new ArrayList<>();
 
@@ -24,7 +25,6 @@ public class UserDetailsImpl implements UserDetails {
             roles.add(auth);
         }
     }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
