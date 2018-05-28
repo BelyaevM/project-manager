@@ -61,4 +61,8 @@ public class UserDetailsImpl implements UserDetails {
         return user.isEnabled();
     }
 
+    public User getUser() {
+        return user;
+    }
+
 }

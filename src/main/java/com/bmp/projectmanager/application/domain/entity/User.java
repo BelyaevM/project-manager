@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -151,5 +152,33 @@ public class User implements Serializable {
 
 	    return list;
 	}
+
+    public String getFullName() {
+        return this.firstName + " " + this.lastName;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, password, enabled, token);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+
+        if (obj == this)
+            return true;
+
+        if (!(obj instanceof User))
+        return false;
+
+        User user = (User)obj;
+
+        if (user.hashCode() == this.hashCode())
+            return true;
+
+        return false;
+    }
 
 }

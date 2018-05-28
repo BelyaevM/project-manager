@@ -1,10 +1,8 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@attribute name="title" required="true" rtexprvalue="true"%>
 <%@attribute name="content" fragment="true"%>
 <%@attribute name="appscript" fragment="true"%>
+<%@ include file="/WEB-INF/jsp/taglibs.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -16,6 +14,9 @@
 <body id="body">
    <div class="menu">
         <div class="mainMenu">
+            <sec:authorize access="hasRole('ADMIN')">
+                <a href="/user/list"><spring:message code="main.menu.label.users.list" /></a><br>
+            </sec:authorize>
         </div>
         <div class="rightMenu">
             <c:url value="${requestScope['javax.servlet.forward.request_uri']}" var="langEn">
@@ -27,6 +28,8 @@
             <a href="${langEn }"><spring:message code="english.label" /></a>
             <a href="${langRu }"><spring:message code="russian.label" /></a>            
             <sec:authorize access="isAuthenticated()">
+                &nbsp;&nbsp;
+                <a href="/profile/view"><spring:message code="menu.label.profile" /></a>
                 <form id="logoutForm" action="/logout" method="post">
                     <sec:csrfInput/>
                     <a class="logout" href="<c:url value="/logout" />" onclick="$('#logoutForm').submit(); return false;"><spring:message code="form.label.logout" /></a>
