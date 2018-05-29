@@ -8,7 +8,7 @@
         <h1>${pageTitle }</h1>
         <br>
 	    <form:form action="/user/registration" modelAttribute="user">
-	        <label for="username"><spring:message code="form.label.email" /></label><form:input path="email" />&nbsp;<form:errors path="email" /><br>
+	        <label for="email"><spring:message code="form.label.email" /></label><form:input path="email" />&nbsp;<form:errors path="email" /><br>
 	        <label for="firstName"><spring:message code="form.label.firstName" /></label><form:input path="firstName" />&nbsp;<form:errors path="firstName" /><br>
 	        <label for="lastName"><spring:message code="form.label.lastName" /></label><form:input path="lastName" />&nbsp;<form:errors path="lastName" /><br>
 	        <label for="password"><spring:message code="form.label.password" /></label><form:password path="password"/>&nbsp;<form:errors path="password" /><br>

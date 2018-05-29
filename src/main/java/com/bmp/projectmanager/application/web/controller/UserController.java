@@ -68,9 +68,8 @@ public class UserController {
 	public @ResponseBody ModelAndView processConfirmationForm(ModelAndView modelAndView,
 			@Valid @ModelAttribute("user") UserRegistrationForm userRegistrationForm, BindingResult bindingResult, HttpServletRequest request) {
 
-		modelAndView.setViewName("user/registration");
-
 		if (bindingResult.hasErrors()) {
+	        modelAndView.setViewName("user/registration");
             return modelAndView;
         }
 

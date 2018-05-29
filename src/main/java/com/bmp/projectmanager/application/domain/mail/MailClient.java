@@ -42,9 +42,7 @@ public class MailClient {
         String defaultFileName = MAIL_FOLDER + File.separator + name + "_en.tmpl";
 
         File file = null;
-
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-
         URL resourceName = classLoader.getResource(fileName);
 
         if (resourceName == null) {

@@ -52,7 +52,6 @@ public class UserDomainServices {
 		token = DigestUtils.md5DigestAsHex(token.getBytes());
 		user.setToken(token);
 
-//		mailClient.prepareAndSend(user.getEmail(), "Hello! Registration url: " + UriUtils.encode("/user/activate?email=" + user.getEmail() + "&token=" + user.getToken(), "UTF-8") );
 		mailClient.sendRegistrationEmail(user, hostUrl);
 
 		userDao.save(user);

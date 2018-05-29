@@ -23,8 +23,8 @@ public class UserRegistrationValidator implements Validator {
 			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "email.empty", "Email is empty");
 		}
 
-		if (userRegistrationForm.getFirstName().equals("Oleg")) {
-		    errors.rejectValue("firstName", "firstName.error", "firstName Oleg not allowed");
+		if (!userRegistrationForm.getPassword().equals(userRegistrationForm.getPasswordConfirm())) {
+		    errors.rejectValue("password", "password.error", "Password and Password confirm fields should be equal");
 		}
 
 
