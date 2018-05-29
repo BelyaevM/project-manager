@@ -1,9 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/taglibs.jsp" %>
 
-<t:template title="Projm">
+<spring:message code="user.list.title" var="pageTitle" />
+
+<t:template title="${pageTitle }">
     <jsp:attribute name="content">
-        <h1><spring:message code="user.list.title" /></h1>
+        <h1>${pageTitle }</h1>
         
         <c:if test="${users.size() > 0 }">
             <table class="datatable">

@@ -1,9 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/taglibs.jsp" %>
 
-<t:template title="Login">
+<spring:message code="loginForm.title" var="pageTitle"/>
+
+<t:template title="${pageTitle }">
     <jsp:attribute name="content">
-        <h1><spring:message code="loginForm.title"/></h1>
+        <h1>${pageTitle }</h1>
 
         <div style="margin: 0 auto; width: 50%">
 		    <form action="/login" method="post">

@@ -1,9 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/taglibs.jsp" %>
 
-<t:template title="Project Manager">
+<spring:message code="home.page.title" var="pageTitle" />
+
+<t:template title="${pageTitle }">
 	<jsp:attribute name="content">
-		<h1>Home page</h1>
+		<h1>${pageTitle }</h1>
 
         <div>
             <h2>Test (remove on producion).</h2>
