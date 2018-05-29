@@ -84,7 +84,12 @@ public class UserController {
 	public ModelAndView activate(ModelAndView modelAndView,
 			@RequestParam("email") String email, @RequestParam("token") String token) {
 
-		modelAndView.addObject("result", userService.userActivate(email, token));
+	    try {
+	        modelAndView.addObject("result", userService.userActivate(email, token));
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        modelAndView.addObject("result", false);
+	    }
 
 		modelAndView.setViewName("user/activate");
 		return modelAndView;
