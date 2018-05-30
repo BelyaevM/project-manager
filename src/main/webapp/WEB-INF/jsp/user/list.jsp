@@ -20,11 +20,11 @@
 
              <c:forEach items="${users }" var="user">
                 <tr>
-                    <td>${user.id }</td>
-                    <td>${user.email }</td>
-                    <td>${user.firstName }&nbsp;${user.lastName }</td>
-                    <td>${user.highLevelRole }</td>
-                    <td>${user.enabled }</td>
+                    <td><c:out value="${user.id }"/></td>
+                    <td><c:out value="${user.email }"/></td>
+                    <td><c:out value="${user.fullName }"/></td>
+                    <td><c:out value="${user.highLevelRole }"/></td>
+                    <td><c:out value="${user.enabled }" /></td>
                     <td><a href="/user/settings/${user.id }"><spring:message code="user.list.settings" /></a></td>
                 </tr>
              </c:forEach>             

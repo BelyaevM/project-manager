@@ -61,7 +61,7 @@ public class UserDomainServices {
 
 	public boolean userActivate(String email, String token) {
 
-		User user = userDao.getByEmail(email);
+		User user = userDao.findByEmail(email);
 
 		if (user != null) {
 			if (!token.isEmpty() && user.getToken().equals(token)) {
@@ -83,6 +83,11 @@ public class UserDomainServices {
 		}
 
 		return null;
+	}
+
+	public User getByEmail(String email) {
+        User user = userDao.findByEmail(email);
+        return user;
 	}
 
 	public boolean hasRole(User u, String role) {

@@ -23,6 +23,7 @@ import com.bmp.projectmanager.application.domain.entity.User;
 public class MailClient {
 
     private static String MAIL_FOLDER = "mails";
+    private static String MAIL_EXT = "tmpl";
     private static String MAIL_FROM_DEFAULT = "no-reply@projm.com";
 
 	private JavaMailSender mailSender;
@@ -38,15 +39,15 @@ public class MailClient {
     public String getTemplate(String name, Locale locale, Map<String, String> replaces) throws IOException {
 
         String lang = locale.getLanguage();
-        String fileName = MAIL_FOLDER + File.separator + name + "_" + lang + ".tmpl";
-        String defaultFileName = MAIL_FOLDER + File.separator + name + "_en.tmpl";
+        String fileName = MAIL_FOLDER + File.separator + name + "_" + lang + "." + MAIL_EXT;
 
         File file = null;
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
         URL resourceName = classLoader.getResource(fileName);
 
         if (resourceName == null) {
-            resourceName = classLoader.getResource(defaultFileName);
+            fileName = MAIL_FOLDER + File.separator + name + "_en." + MAIL_EXT;
+            resourceName = classLoader.getResource(fileName);
         }
 
         file = new File(resourceName.getFile());
@@ -70,10 +71,9 @@ public class MailClient {
         try {
 
             MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-            message.setSubject(subject);
-            MimeMessageHelper helper;
-            helper = new MimeMessageHelper(message, true);
+            helper.setSubject(subject);
             helper.setFrom(from);
             helper.setTo(to);
             helper.setText(msg, true);

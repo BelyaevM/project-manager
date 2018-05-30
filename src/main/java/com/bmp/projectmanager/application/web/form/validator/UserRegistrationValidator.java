@@ -1,14 +1,19 @@
 package com.bmp.projectmanager.application.web.form.validator;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import com.bmp.projectmanager.application.domain.entity.User;
+import com.bmp.projectmanager.application.domain.services.UserDomainServices;
 import com.bmp.projectmanager.application.web.form.UserRegistrationForm;
 
 @Component
 public class UserRegistrationValidator implements Validator {
+
+    @Autowired
+    UserDomainServices userDomainService;
 
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -19,12 +24,10 @@ public class UserRegistrationValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		UserRegistrationForm userRegistrationForm = (UserRegistrationForm) target;
 
-		if(userRegistrationForm.getEmail() == null || userRegistrationForm.getEmail().length() == 0) {
-			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "email.empty", "Email is empty");
-		}
+		User user = userDomainService.getByEmail(userRegistrationForm.getEmail());
 
-		if (!userRegistrationForm.getPassword().equals(userRegistrationForm.getPasswordConfirm())) {
-		    errors.rejectValue("password", "password.error", "Password and Password confirm fields should be equal");
+		if (user != null) {
+		    errors.rejectValue("email", "email.error.duplicate.exists", "User with this email already exists.");
 		}
 
 

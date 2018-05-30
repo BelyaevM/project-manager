@@ -11,9 +11,7 @@ import com.bmp.projectmanager.application.domain.entity.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByEmailAndEnabledTrue(String email);
-
-    @Query("Select u from User u where email = :email")
-    public User getByEmail(@Param("email") String email);
+    User findByEmail(String email);
 
     @Query("Select u from User u where id <> :userId")
     public List<User> findAllExcept(@Param("userId") Long userId);
