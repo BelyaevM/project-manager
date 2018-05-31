@@ -7,6 +7,8 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Pattern.Flag;
 import javax.validation.constraints.Size;
 
+import org.springframework.web.util.HtmlUtils;
+
 public class UserRegistrationForm {
 
 	@NotNull
@@ -43,7 +45,7 @@ public class UserRegistrationForm {
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstName = HtmlUtils.htmlEscape(firstName);
 	}
 
 	public String getLastName() {
@@ -51,7 +53,7 @@ public class UserRegistrationForm {
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.lastName = HtmlUtils.htmlEscape(lastName);
 	}
 
 	public String getPassword() {

@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONObject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -122,6 +124,28 @@ public class UserDomainServices {
         }
 
         userDao.saveAndFlush(user);
+    }
+
+    public String searchUsersByPatternAsJson(String pattern) {
+        List<User> users = userDao.findAllByFirstNameContainingOrLastNameContaining(pattern, pattern);
+        JSONArray jsonArr = new JSONArray();
+
+        try {
+            for (User user : users) {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.append("id", user.getId());
+                jsonObject.append("firstName", user.getFirstName());
+                jsonObject.append("lastName", user.getLastName());
+                jsonObject.append("email", user.getEmail());
+                jsonObject.append("roles", user.getHighLevelRole());
+                jsonObject.append("enabled", user.isEnabled());
+                jsonArr.put(jsonObject);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return jsonArr.toString();
     }
 
 }

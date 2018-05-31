@@ -2,6 +2,7 @@
 <%@attribute name="title" required="true" rtexprvalue="true"%>
 <%@attribute name="content" fragment="true"%>
 <%@attribute name="appscript" fragment="true"%>
+<%@attribute name="head" fragment="true"%>
 <%@ include file="/WEB-INF/jsp/taglibs.jsp" %>
 
 <!DOCTYPE html>
@@ -9,6 +10,7 @@
 <head>
 <title><spring:message code="project.title" /> - ${title }</title>
 <link rel="stylesheet" type="text/css" href="/css/main.css">
+<jsp:invoke fragment="head" />
 </head>
 
 <body id="body">
