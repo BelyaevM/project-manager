@@ -48,11 +48,11 @@
 		</div>
 	</header>
 	<div class="content">
-		<jsp:invoke fragment="content"></jsp:invoke>
+		<jsp:invoke fragment="content" />
 	</div>
 
     <script src="/js/jquery-3.3.1.min.js"></script>
-	<jsp:invoke fragment="appscript"></jsp:invoke>
+	<jsp:invoke fragment="appscript" />
 </body>
 
 </html>
