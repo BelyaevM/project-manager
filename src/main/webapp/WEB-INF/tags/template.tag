@@ -16,6 +16,9 @@
 <body id="body">
    <div class="menu">
         <div class="mainMenu">
+            <sec:authorize access="isAuthenticated()">
+                <a href="/project/list"><spring:message code="main.menu.label.projects.list" /></a>
+            </sec:authorize>
             <sec:authorize access="hasRole('ADMIN')">
                 <a href="/user/list"><spring:message code="main.menu.label.users.list" /></a><br>
             </sec:authorize>

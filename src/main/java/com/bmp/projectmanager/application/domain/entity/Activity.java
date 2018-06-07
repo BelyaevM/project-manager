@@ -35,7 +35,7 @@ public class Activity {
     @JoinColumn(name="userId", nullable=false)
     private User user;
 
-    @Column(name="subject", length=512, nullable=false)
+    @Column(name="description", length=512, nullable=false)
     private String description;
 
     @Column(name="spent_time", nullable=true)
