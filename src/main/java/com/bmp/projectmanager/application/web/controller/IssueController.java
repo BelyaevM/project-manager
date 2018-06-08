@@ -116,6 +116,7 @@ public class IssueController {
         if (!issueDomainServices.isUserHaveAccess(issue, userDetails.getUser())) {
             modelAndView.setViewName("redirect:/issue/accessDenied");
         } else {
+            modelAndView.addObject("issueId", issueId);
             modelAndView.addObject(activityCreateForm);
             modelAndView.addObject("issue", issue);
             modelAndView.setViewName("issue/activityAdd");
@@ -129,9 +130,9 @@ public class IssueController {
     public @ResponseBody ModelAndView addActivityPost(ModelAndView modelAndView, @PathVariable Long issueId, Authentication auth,
             @Valid @ModelAttribute("activityCreateForm") ActivityCreateForm activityCreateForm, BindingResult bindingResult) {
 
-        modelAndView.setViewName("issue/create");
-
         if (bindingResult.hasErrors()) {
+            modelAndView.addObject("issueId", issueId);
+            modelAndView.setViewName("issue/activityAdd");
             return modelAndView;
         }
 

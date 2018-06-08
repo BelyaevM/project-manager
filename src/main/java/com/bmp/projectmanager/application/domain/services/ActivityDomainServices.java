@@ -8,6 +8,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import com.bmp.projectmanager.application.dao.ActivityRepository;
@@ -47,6 +49,15 @@ public class ActivityDomainServices {
 
     public List<Activity> getLastTenForIssue(Issue issue) {
         return activityRepository.findAllTop10ByIssueAndStatusOrderByUpdatedDesc(issue, Activity.STATUS_DONE);
+    }
+
+    public List<Activity> getUserActivity(User user, int limit) {
+        Pageable page = null;
+        if (limit > 0) {
+            page = PageRequest.of(0, limit);
+        }
+
+        return activityRepository.findAllByUserAndStatusOrderByUpdatedDesc(user, Activity.STATUS_DONE, page);
     }
 
 }

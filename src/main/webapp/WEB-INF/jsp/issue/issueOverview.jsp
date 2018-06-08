@@ -1,7 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ include file="/WEB-INF/jsp/taglibs.jsp" %>
 
 <t:template title="Issue">
     <jsp:attribute name="content">
@@ -16,6 +14,12 @@
 
         <div>
             <span><img style="vertical-align: middle;" src="/avatar/big/${issue.owner.id }"> Added by: ${issue.owner.fullName } </span><br>
+        </div>
+        
+        <div class="info-block">
+            Project: ${issue.project.description }<br>
+            Description: <i>${issue.description }</i><br>
+            Status: ${issue.status }
         </div>
         
         <div style="padding: 0.5em; margin-top: 0.5em; border: 1px solid #e4e4e4; width: 70%;">        

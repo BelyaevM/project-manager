@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.bmp.projectmanager.application.domain.entity.Issue;
 
 public class IssueCreateForm {
@@ -23,6 +25,7 @@ public class IssueCreateForm {
     @NotNull
     private Long issueStatus;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date due;
 
 	@NotNull

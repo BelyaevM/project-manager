@@ -2,9 +2,10 @@ package com.bmp.projectmanager.application.web.form;
 
 import java.util.Date;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class ActivityCreateForm {
 
@@ -12,11 +13,13 @@ public class ActivityCreateForm {
     @NotBlank
 	private String description;
 
-    @NotNull
-    @Min(0)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
 	private int spentTime;
 
 	private Date created;
+
+	@NotNull
+	private Long issueId;
 
     public String getDescription() {
         return description;
@@ -40,6 +43,14 @@ public class ActivityCreateForm {
 
     public void setSpentTime(int spentTime) {
         this.spentTime = spentTime;
+    }
+
+    public Long getIssueId() {
+        return issueId;
+    }
+
+    public void setIssueId(Long issueId) {
+        this.issueId = issueId;
     }
 
 }
