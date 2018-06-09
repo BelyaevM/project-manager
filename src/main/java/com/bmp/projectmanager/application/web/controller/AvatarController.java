@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bmp.projectmanager.spring.UserDetailsImpl;
 
 import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.geometry.Positions;
 
 @Controller
 @RequestMapping("/avatar")
@@ -88,8 +89,8 @@ public class AvatarController {
                 File dest = new File(fullFilePath);
                 multipartFile.transferTo(dest);
 
-                Thumbnails.of(dest).size(80, 80).toFile(new File(filePath + userDetails.getUser().getId() + BIG_AVATAR_POSTFIX));
-                Thumbnails.of(dest).size(35, 35).toFile(new File(filePath + userDetails.getUser().getId() + SMALL_AVATAR_POSTFIX));
+                Thumbnails.of(dest).size(80, 80).crop(Positions.CENTER).toFile(new File(filePath + userDetails.getUser().getId() + BIG_AVATAR_POSTFIX));
+                Thumbnails.of(dest).size(35, 35).crop(Positions.CENTER).toFile(new File(filePath + userDetails.getUser().getId() + SMALL_AVATAR_POSTFIX));
 
             } catch (IllegalStateException e) {
                 System.out.println(e);

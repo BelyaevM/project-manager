@@ -50,7 +50,7 @@
                           <c:forEach items="${activities }" var="activity">
                               <tr>
                                   <td><a href="/project/overview/${activity.project.id }"><c:out value="${activity.project.name }"/></a></td>
-                                  <td><a href="/issue/overview/${activity.issue.id }"><c:out value="${activity.issue.description }"/></a></td>
+                                  <td><a href="/issue/overview/${activity.issue.id }"><c:out value="${activity.issue.subject }"/></a></td>
                                   <td><c:out value="${activity.description }"/></td>
                                   <td><c:out value="${activity.spentTime }"/></td>
                               </tr>

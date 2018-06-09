@@ -217,6 +217,13 @@ form select {
 *   END Project section
 */
 
+.gravatar {
+    background: #fff; 
+    border: solid 1px #d5d5d5; 
+    padding:2px; 
+    vertical-align: middle;	
+}
+
 .info-block {
 	padding: 0.5em; 
 	margin-top: 0.5em; 

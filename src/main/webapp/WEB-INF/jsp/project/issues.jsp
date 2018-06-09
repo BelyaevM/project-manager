@@ -28,8 +28,8 @@
 	                    <tr>
 	                        <td>${issue.id }</td>
 	                        <td><a href="/issue/overview/${issue.id }">${issue.subject }</a></td>
-	                        <td><img src="/avatar/small/${issue.owner.id }">${issue.owner.fullName }</td>
-	                        <td><img src="/avatar/small/${issue.performer.id }">${issue.performer.fullName }</td>
+	                        <td><img class="gravatar" src="/avatar/small/${issue.owner.id }">${issue.owner.fullName }</td>
+	                        <td><img class="gravatar" src="/avatar/small/${issue.performer.id }">${issue.performer.fullName }</td>
 	                        <td>${issue.updated }</td>
 	                    </tr>
 	                    </c:forEach> 		                

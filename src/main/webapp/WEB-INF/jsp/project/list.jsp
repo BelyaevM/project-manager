@@ -9,7 +9,7 @@
         
         <div>
             <sec:authorize access="hasRole('MANAGER')">
-                <a href="/project/add">Create project</a>
+                <a href="/project/add"><spring:message code="project.list.create" /></a>
             </sec:authorize>
         </div>
         <br>
@@ -17,29 +17,29 @@
             <c:when test="${projectList.size() > 0 }">
 	            <table class="datatable">
 	              <tr class="column-header">
-	                  <th>ID</th>
-	                  <th>Name</th>
-	                  <th>Description</th>
-	                  <th>Manager</th>
-	                  <th>Created</th>
-	                  <th>Updated</th>
+	                  <th><spring:message code="form.label.id" /></th>
+	                  <th><spring:message code="form.label.name" /></th>
+	                  <th><spring:message code="form.label.description" /></th>
+	                  <th><spring:message code="project.overview.manager" /></th>
+	                  <th><spring:message code="project.list.created" /></th>
+	                  <th><spring:message code="project.list.updated" /></th>
 	              </tr>
 	
 	             <c:forEach items="${projectList }" var="project">
 	                <tr>
-	                    <td>${project.id }</td>
-	                    <td><a href="/project/overview/${project.id}">${project.name }</a></td>
-	                    <td>${project.description }</td>
-	                    <td>${project.manager.firstName }&nbsp;${project.manager.lastName }</td>
-	                    <td>${project.created }</td>
-	                    <td>${project.updated }</td>
+	                    <td><c:out value="${project.id }"/></td>
+	                    <td><a href="/project/overview/${project.id}"><c:out value="${project.name }" /></a></td>
+	                    <td><c:out value="${project.description }"/></td>
+	                    <td><c:out value="${project.manager.fullName }"/></td>
+	                    <td><c:out value="${project.created }"/></td>
+	                    <td><c:out value="${project.updated }"/></td>
 	                </tr>
 	             </c:forEach>             
 	              
 	            </table>
             </c:when>
             <c:otherwise>
-                Projects not found.
+                <spring:message code="project.list.empty" />
             </c:otherwise>
         </c:choose>
     

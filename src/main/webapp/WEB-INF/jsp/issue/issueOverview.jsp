@@ -13,7 +13,7 @@
         <br>
 
         <div>
-            <span><img style="vertical-align: middle;" src="/avatar/big/${issue.owner.id }"> Added by: ${issue.owner.fullName } </span><br>
+            <span><img class="gravatar" src="/avatar/big/${issue.owner.id }"> Added by: ${issue.owner.fullName } </span><br>
         </div>
         
         <div class="info-block">
@@ -35,7 +35,7 @@
     
                  <c:forEach items="${activityList }" var="activity">
                     <tr>
-                        <td><img src="/avatar/small/${activity.user.id }" style="vertical-align: middle;"> ${activity.user.fullName }</td>
+                        <td><img class="gravatar" src="/avatar/small/${activity.user.id }" style="vertical-align: middle;"> ${activity.user.fullName }</td>
                         <td>${activity.description }</td>
                         <td>${activity.spentTime }</td>
                         <td>${activity.updated }</td>

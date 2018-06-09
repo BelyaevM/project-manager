@@ -2,6 +2,7 @@ package com.bmp.projectmanager.application.web.form;
 
 import java.util.Date;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -13,9 +14,10 @@ public class ActivityCreateForm {
     @NotBlank
 	private String description;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Min(1)
 	private int spentTime;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date created;
 
 	@NotNull
