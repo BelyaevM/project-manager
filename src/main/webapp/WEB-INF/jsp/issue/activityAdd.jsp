@@ -11,7 +11,7 @@
         <h1>${issue.subject }: Activity report</h1>
 	    <form:form action="/issue/${issueId }/activity/new" modelAttribute="activityCreateForm">
 	       <form:hidden path="issueId"/>
-	       <form:label path="created" for="due">Due to</form:label><form:input class="datepicker-here" data-date-format="dd/mm/yyyy" autoClose="true" path="created" />&nbsp;<form:errors path="created" /><br><br>
+	       <form:label path="created" for="due">Due to</form:label><form:input class="datepicker-here" data-date-format="dd/mm/yyyy" path="created" />&nbsp;<form:errors path="created" /><br><br>
 	       <form:label path="spentTime" for="spentTime">Spent time (min)</form:label><form:input path="spentTime" />&nbsp;<form:errors path="spentTime" /><br><br>
 	       <label for="description">Comment</label><form:input path="description" />&nbsp;<form:errors path="description" /><br>
 	        

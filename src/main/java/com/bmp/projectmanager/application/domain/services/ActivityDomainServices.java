@@ -60,4 +60,8 @@ public class ActivityDomainServices {
         return activityRepository.findAllByUserAndStatusOrderByUpdatedDesc(user, Activity.STATUS_DONE, page);
     }
 
+    public int getTotalSpentTime(Issue issue) {
+        return activityRepository.findTotalSpentTimeForIssue(issue, Activity.STATUS_DONE);
+    }
+
 }

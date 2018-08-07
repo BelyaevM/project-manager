@@ -101,6 +101,7 @@ public class IssueController {
 	    } else {
 	        modelAndView.addObject("activityList", activityDomainServices.getLastTenForIssue(issue));
 	        modelAndView.addObject("issue", issue);
+	        modelAndView.addObject("totalSpent", activityDomainServices.getTotalSpentTime(issue));
 	        modelAndView.setViewName("issue/issueOverview");
 	    }
 

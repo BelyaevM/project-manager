@@ -19,7 +19,8 @@
         <div class="info-block">
             Project: ${issue.project.description }<br>
             Description: <i>${issue.description }</i><br>
-            Status: ${issue.status }
+            Status: ${issue.statusStr }<br>
+            Spent total (min): ${totalSpent }
         </div>
         
         <div style="padding: 0.5em; margin-top: 0.5em; border: 1px solid #e4e4e4; width: 70%;">        
